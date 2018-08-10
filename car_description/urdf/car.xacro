@@ -137,9 +137,9 @@
         </visual>
 
         <inertial>
-            <mass value="${laserSize}"/>
+            <mass value="${laserMass}"/>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <box_inertia m="${laserSize}" x="${laserSize}" y="${laserSize}" z="${laserSize}"/>
+            <box_inertia m="${laserMass}" x="${laserSize}" y="${laserSize}" z="${laserSize}"/>
         </inertial>
     </link>
 </robot>
