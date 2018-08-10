@@ -19,6 +19,9 @@
     <xacro:property name="cameraSize" value="0.05"/>
     <xacro:property name="cameraMass" value="0.1"/>
 
+    <xacro:property name="laserSize" value="0.05"/>
+    <xacro:property name="laserMass" value="0.1"/>
+
     <xacro:include filename="$(find car_description)/urdf/car.gazebo" />
     <xacro:include filename="$(find car_description)/urdf/materials.xacro" />
     <xacro:include filename="$(find car_description)/urdf/macros.xacro" />
@@ -83,7 +86,7 @@
     <wheel lr="right" tY="-1"/>
 
     <joint name="camera_joint" type="fixed">
-        <origin xyz="${-cameraSize+chassisLength/2} 0 ${cameraSize+wheelRadius+cameraSize/2}" rpy="0 0 0"/>
+        <origin xyz="${cameraSize+chassisLength/2} 0 ${wheelRadius}" rpy="0 0 0"/>
         <parent link="chassis"/>
         <child link="camera"/>
     </joint>
@@ -111,4 +114,32 @@
         </inertial>
     </link>
 
+    <joint name="rplidar_joint" type="fixed">
+        <origin xyz="${-laserSize+chassisLength/2} 0 ${wheelRadius+laserSize+laserSize/2}" rpy="0 0 0"/>
+        <parent link="chassis"/>
+        <child link="laser"/>
+    </joint>
+
+    <link name="laser">
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${laserSize} ${laserSize} ${laserSize}"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${laserSize} ${laserSize} ${laserSize}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <inertial>
+            <mass value="${laserSize}"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <box_inertia m="${laserSize}" x="${laserSize}" y="${laserSize}" z="${laserSize}"/>
+        </inertial>
+    </link>
 </robot>
