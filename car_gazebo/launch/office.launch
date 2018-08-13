@@ -22,7 +22,7 @@
 
     <!-- push robot_description to factory and spawn robot in gazebo -->
     <node name="car_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-          args="-urdf -param robot_description -model car -x -3.5"/>
+          args="-urdf -param robot_description -model car -x -3.5 -y 1.0"/>
 
     <!-- TODO: Run RVIZ-->
     <!-- <node name="$(anon rviz)" pkg="rviz" type="rviz" args="$(find car_gazebo)/car.rviz" output="screen"/> -->
