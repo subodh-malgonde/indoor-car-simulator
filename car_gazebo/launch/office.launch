@@ -27,6 +27,9 @@
     <!-- TODO: Run RVIZ-->
     <!-- <node name="$(anon rviz)" pkg="rviz" type="rviz" args="$(find car_gazebo)/car.rviz" output="screen"/> -->
 
+    <node name="key_op" pkg="turtlesim" type="turtle_teleop_key">
+        <remap from="/turtle1/cmd_vel" to="/car/cmd_vel"/>
+    </node>
     <!-- ros_control car launch file -->
     <include file="$(find car_control)/launch/car_control.launch"/>
 </launch>
