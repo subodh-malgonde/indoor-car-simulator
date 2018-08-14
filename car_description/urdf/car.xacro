@@ -30,10 +30,10 @@
 
     <joint name="base_joint" type="fixed">
       <parent link="footprint"/>
-      <child link="chassis"/>
+      <child link="base_link"/>
     </joint>
 
-    <link name='chassis'>
+    <link name='base_link'>
         <collision>
             <origin xyz="0 0 ${wheelRadius}" rpy="0 0 0"/>
             <geometry>
@@ -55,7 +55,7 @@
     </link>
 
     <joint name="fixed" type="fixed">
-        <parent link="chassis"/>
+        <parent link="base_link"/>
         <child link="caster_wheel"/>
     </joint>
 
@@ -87,7 +87,7 @@
 
     <joint name="camera_joint" type="fixed">
         <origin xyz="${cameraSize+chassisLength/2} 0 ${wheelRadius}" rpy="0 0 0"/>
-        <parent link="chassis"/>
+        <parent link="base_link"/>
         <child link="camera"/>
     </joint>
 
@@ -116,7 +116,7 @@
 
     <joint name="rplidar_joint" type="fixed">
         <origin xyz="${-laserSize+chassisLength/2} 0 ${wheelRadius+laserSize+laserSize/2}" rpy="0 0 0"/>
-        <parent link="chassis"/>
+        <parent link="base_link"/>
         <child link="laser"/>
     </joint>
 

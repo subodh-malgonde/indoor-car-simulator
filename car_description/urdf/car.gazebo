@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <gazebo reference="chassis">
+    <gazebo reference="base_link">
         <material>Gazebo/Orange</material>
     </gazebo>
 
@@ -68,10 +68,11 @@
 
     <!-- plugin for publishing the robot's 3D pose -->
     <!-- read more: http://ebrenna8thesis.blogspot.com/2017/11/plugin-for-publishing-robot-pose-to-ros.html -->
-     <gazebo>
+    <!-- QUESTION: what should the frame name be? -->
+    <gazebo>
         <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
             <frameName>map</frameName>
-            <bodyName>chassis</bodyName>
+            <bodyName>base_link</bodyName>
             <topicName>car/odom</topicName>
             <updateRate>30.0</updateRate>
         </plugin>
@@ -108,7 +109,7 @@
             </ray>
             <plugin name="rplidar_controller" filename="libgazebo_ros_laser.so">
                 <topicName>/scan</topicName>
-                <frameName>base_laser</frameName>
+                <frameName>laser</frameName>
                 <alwaysOn>true</alwaysOn>
             </plugin>
         </sensor>

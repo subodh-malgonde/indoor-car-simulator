@@ -1,5 +1,4 @@
 <launch>
-
     <!-- these are the arguments you can pass this launch file, for example paused:=true -->
     <arg name="paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
@@ -8,7 +7,8 @@
     <arg name="debug" default="false"/>
 
     <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find car_description)/urdf/car.xacro'"/>
+    <param name="robot_description"
+           command="$(find xacro)/xacro.py '$(find car_description)/urdf/car.xacro'"/>
 
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -24,12 +24,9 @@
     <node name="car_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
           args="-urdf -param robot_description -model car -x -3.5 -y 1.0"/>
 
-    <!-- TODO: Run RVIZ-->
-    <!-- <node name="$(anon rviz)" pkg="rviz" type="rviz" args="$(find car_gazebo)/car.rviz" output="screen"/> -->
+    <node pkg="tf2_ros" type="static_transform_publisher"
+          name="bl_laser" args="0 0 0 0 0 0 1 base_link laser" />
 
-    <node name="key_op" pkg="turtlesim" type="turtle_teleop_key">
-        <remap from="/turtle1/cmd_vel" to="/car/cmd_vel"/>
-    </node>
     <!-- ros_control car launch file -->
     <include file="$(find car_control)/launch/car_control.launch"/>
 </launch>
