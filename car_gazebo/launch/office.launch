@@ -24,9 +24,6 @@
     <node name="car_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
           args="-urdf -param robot_description -model car -x -3.5 -y 1.0"/>
 
-    <node pkg="tf2_ros" type="static_transform_publisher"
-          name="bl_laser" args="0 0 0 0 0 0 1 base_link laser" />
-
     <!-- ros_control car launch file -->
     <include file="$(find car_control)/launch/car_control.launch"/>
 </launch>
