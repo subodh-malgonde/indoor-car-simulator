@@ -22,6 +22,9 @@
     <xacro:property name="laserSize" value="0.05"/>
     <xacro:property name="laserMass" value="0.1"/>
 
+    <xacro:property name="imuSize" value="0.02"/>
+    <xacro:property name="imuMass" value="0.01"/>
+
     <xacro:include filename="$(find car_description)/urdf/car.gazebo" />
     <xacro:include filename="$(find car_description)/urdf/materials.xacro" />
     <xacro:include filename="$(find car_description)/urdf/macros.xacro" />
@@ -86,7 +89,7 @@
     <wheel lr="right" tY="-1"/>
 
     <joint name="camera_joint" type="fixed">
-        <origin xyz="${cameraSize+chassisLength/2} 0 ${wheelRadius}" rpy="0 0 0"/>
+        <origin xyz="${cameraSize/2+chassisLength/2} 0 ${wheelRadius}" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="camera"/>
     </joint>
@@ -111,6 +114,35 @@
             <mass value="${cameraMass}"/>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}"/>
+        </inertial>
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+        <origin xyz="0 0 ${wheelRadius + chassisHeight/2 + 1.5*imuSize}" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="base_imu_link"/>
+    </joint>
+
+    <link name="base_imu_link">
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${imuSize} ${imuSize} ${imuSize}"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${imuSize} ${imuSize} ${imuSize}"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+
+        <inertial>
+            <mass value="${imuMass}"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <box_inertia m="${imuMass}" x="${imuSize}" y="${imuSize}" z="${imuSize}"/>
         </inertial>
     </link>
 
