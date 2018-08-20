@@ -29,7 +29,7 @@
             <commandTopic>car/cmd_vel</commandTopic>
             <odometryTopic>car/odom_diffdrive</odometryTopic>
             <odometryFrame>odom</odometryFrame>
-            <robotBaseFrame>footprint</robotBaseFrame>
+            <robotBaseFrame>base_footprint</robotBaseFrame>
         </plugin>
     </gazebo>
 

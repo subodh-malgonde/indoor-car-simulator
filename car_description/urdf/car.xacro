@@ -29,10 +29,10 @@
     <xacro:include filename="$(find car_description)/urdf/materials.xacro" />
     <xacro:include filename="$(find car_description)/urdf/macros.xacro" />
 
-    <link name="footprint" />
+    <link name="base_footprint" />
 
     <joint name="base_joint" type="fixed">
-      <parent link="footprint"/>
+      <parent link="base_footprint"/>
       <child link="base_link"/>
     </joint>
 
