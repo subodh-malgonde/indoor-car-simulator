@@ -28,6 +28,7 @@
             <wheelTorque>2</wheelTorque>
             <commandTopic>car/cmd_vel</commandTopic>
             <odometryTopic>car/odom_diffdrive</odometryTopic>
+            <publishOdomTF>false</publishOdomTF>
             <odometryFrame>odom</odometryFrame>
             <robotBaseFrame>base_footprint</robotBaseFrame>
         </plugin>
