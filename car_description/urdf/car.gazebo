@@ -82,7 +82,7 @@
     <gazebo reference="laser">
         <material>Gazebo/Red</material>
         <sensor type="ray" name="rplidar">
-            <visualize>true</visualize>
+            <visualize>false</visualize>
             <update_rate>10</update_rate>
             <ray>
                 <scan>
@@ -126,7 +126,7 @@
                 <topicName>/imu</topicName>
                 <bodyName>base_imu_link</bodyName>
                 <updateRateHZ>100</updateRateHZ>
-                <gaussianNoise>0.0</gaussianNoise>
+                <gaussianNoise>0.05</gaussianNoise>
                 <xyzOffset>0 0 0</xyzOffset>
                 <rpyOffset>0 0 0</rpyOffset>
                 <frameName>base_imu_link</frameName>
