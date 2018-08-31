@@ -70,14 +70,14 @@
     <!-- plugin for publishing the robot's 3D pose -->
     <!-- read more: http://ebrenna8thesis.blogspot.com/2017/11/plugin-for-publishing-robot-pose-to-ros.html -->
     <!-- QUESTION: what should the frame name be? -->
-    <!-- <gazebo>
+    <gazebo>
         <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
             <frameName>map</frameName>
             <bodyName>base_link</bodyName>
-            <topicName>car/odom</topicName>
+            <topicName>car/ground_truth</topicName>
             <updateRate>30.0</updateRate>
         </plugin>
-    </gazebo> -->
+    </gazebo>
 
     <gazebo reference="laser">
         <material>Gazebo/Red</material>
