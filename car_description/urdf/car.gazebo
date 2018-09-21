@@ -88,8 +88,13 @@
                 <scan>
                     <horizontal>
                       <samples>360</samples>
-                      <min_angle>-2.356194</min_angle>
-                      <max_angle>2.356194</max_angle>
+                      <min_angle>-3.12413907051</min_angle>
+                      <max_angle>3.14159274101</max_angle>
+
+                      <!-- Resolution is multiplied by samples to determine number of
+                       simulated beams vs interpolated beams. See:
+                       http://sdformat.org/spec?ver=1.6&elem=sensor#horizontal_resolution
+                       -->
                       <resolution>1</resolution>
                     </horizontal>
                 </scan>
